@@ -1,0 +1,29 @@
+.container {
+    margin: 5rem auto;
+    border-radius: 2rem;
+    filter: drop-shadow(2px 2px 5px rgb(227, 227, 227));
+    background-color: #fff;
+    max-width: 34vw;
+    padding: 5rem;
+    text-align: center;
+
+    .dataContainer {
+        display: flex;
+        background-color: #fff;
+        border-radius: 1rem;
+        
+
+        .name {
+            flex: 1;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .amount {
+            flex: 1;
+            text-align: right;
+        }
+    }
+    
+}
+
