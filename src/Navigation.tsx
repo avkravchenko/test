@@ -11,7 +11,6 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ jsonData, receiveType }) => {
-
   const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
     receiveType(event.currentTarget.textContent || '');
   };
