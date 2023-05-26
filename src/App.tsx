@@ -3,26 +3,31 @@ import './App.css';
 import './scss/displayData.scss';
 import Navigation from './Navigation';
 import jsonData from './myData';
-import Income from './components/Income';
-import Outcome from './components/Outcome';
-import Loan from './components/Loan';
-import Investment from './components/Investment';
-import Home from './components/Home';
+import RenderData from './components/RenderData';
+import { useState } from 'react';
 
 
 
 const App: React.FC = () => {
-  // ...
+
+  const [receivedType, setReceivedType] = useState('')
+
+  const receiveType = (type: string) => {
+    setReceivedType(type)
+  }
+
+  console.log(receivedType)
+
   return (
     <>
-      <Navigation jsonData={jsonData} />
+      <Navigation receiveType={receiveType} jsonData={jsonData} />
       <div className='container'>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/income' element={<Income jsonData={jsonData.data} type="income"/>} />
-          <Route path='/outcome' element={<Outcome jsonData={jsonData.data} type="outcome"/>} />
-          <Route path='/loan' element={<Loan jsonData={jsonData.data} type="loan"/>} />
-          <Route path='/investment' element={<Investment jsonData={jsonData.data} type="investment"/>} />
+          <Route path='/' element={<RenderData jsonData={jsonData.data} type={'income'}/>} />
+          <Route path='/income' element={<RenderData jsonData={jsonData.data} type={receivedType || 'income'}/>} />
+          <Route path='/outcome' element={<RenderData jsonData={jsonData.data} type={receivedType || 'outcome'}/>} />
+          <Route path='/loan' element={<RenderData jsonData={jsonData.data} type={receivedType || 'loan'}/>} />
+          <Route path='/investment' element={<RenderData jsonData={jsonData.data} type={receivedType || 'investment'}/>} />
         </Routes>
       </div>
     </>

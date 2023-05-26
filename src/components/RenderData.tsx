@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import jsonData from "../myData";
 import '../scss/displayData.scss';
 
@@ -16,17 +16,23 @@ type DataItem = {
     address: string;
   };
 
-interface LoanProps {
+interface RenderDataProps {
     jsonData: DataItem[];
     type: string; 
 }
 
-const Loan: React.FC<LoanProps> = ({ jsonData, type }) => {
-  const filteredData: DataItem[] = jsonData.filter((item) => item.type === type);
+const RenderData: React.FC<RenderDataProps> = ({ jsonData, type }) => {
+
+  const [filteredArray, setFilteredArray] = useState<DataItem[]>([]);
+
+  useEffect(() => {
+    const filteredData: DataItem[] = jsonData.filter((item) => item.type === type);
+    setFilteredArray(filteredData)
+  }, [type])
 
   return (
     <>
-      {filteredData.map((item) => (
+      {filteredArray.map((item) => (
         <div className="dataContainer" key={item._id}>
           <div className="name">{item.name.first} {item.name.last}</div>
           <div className="amount">Amount: {item.amount}</div>
@@ -36,4 +42,4 @@ const Loan: React.FC<LoanProps> = ({ jsonData, type }) => {
   );
 }
 
-export default Loan;
+export default RenderData;
