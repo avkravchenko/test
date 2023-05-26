@@ -30,9 +30,3 @@ const App: React.FC = () => {
 }
 
 export default App;
-
-{/* <Route path='/' component={Table}/>
-        <Route path='/navigator?tab=0'/>
-        <Route path='/navigator?tab=1'/>
-        <Route path='/navigator?tab=2'/>
-        <Route path='/navigator?tab=3'/> */}
